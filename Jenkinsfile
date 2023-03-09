@@ -16,14 +16,12 @@ pipeline {
             steps {
                 // Compilo el proyecto con maven para crear el .jar
                 bat 'mvn clean package'
-
-                // Genero la imagen de docker que se llama ms-customer-img
-                bat 'docker build -t ms-customer-img .'
             }
         }
 
         stage("Unit Tests") {
             steps {
+            // Ejecuto los tests unitarios con maven
                 bat 'mvn test'
             }
         }
