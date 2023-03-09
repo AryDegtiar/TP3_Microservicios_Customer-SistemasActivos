@@ -33,11 +33,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        failure {
-            emailext body: "El build falló. Revisa el registro de Jenkins para más detalles.\n\n" + BUILD_LOG, maxLines: 9999, subject: "Error en el build de ${env.JOB_NAME}", to: "tgriffabenitez@gmail.com", appendLog: true
-        }
-    }
-
 }
