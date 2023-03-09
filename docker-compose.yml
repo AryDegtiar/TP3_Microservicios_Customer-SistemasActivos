@@ -7,9 +7,7 @@ services:
     ports:
       - "3307:3306"
     environment:
-      MYSQL_DATABASE: quotes
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-
+      MYSQL_DATABASE: bm0bdzlz9oak5nzjpvlv
 
   app:
     build: .
@@ -19,7 +17,7 @@ services:
     depends_on:
       - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/quotes
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: ""
+      SPRING_DATASOURCE_URL: jdbc:mysql://uk6uvzwqnfo6139d:VnImjK9miylDRqh3AuLi@bm0bdzlz9oak5nzjpvlv-mysql.services.clever-cloud.com:3306/bm0bdzlz9oak5nzjpvlv
+      SPRING_DATASOURCE_USERNAME: uk6uvzwqnfo6139d
+      SPRING_DATASOURCE_PASSWORD: VnImjK9miylDRqh3AuLi
       SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
