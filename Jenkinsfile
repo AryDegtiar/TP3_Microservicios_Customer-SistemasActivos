@@ -3,6 +3,10 @@ pipeline {
     tools {
         maven "M3"
     }
+    enviroment {
+        // Defino la credencial de docker
+        DOCKERHUB_CREDENTIALS = credentials('tgriffabenitez-dockerhub')
+    }
 
     stages {
         stage('Checkout') {
@@ -30,6 +34,20 @@ pipeline {
             steps {
                 // Creo la imagen de docker
                 bat 'docker build -t ms-customer .'
+            }
+        }
+
+        stage('Docker login') {
+            steps {
+                // Hago login en dockerhub
+                bat 'docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+            }
+        }
+
+        stage('Push docker image') {
+            steps {
+                // Hago push de la imagen a dockerhub
+                bat 'docker push tgriffabenitez/ms-customer'
             }
         }
     }
