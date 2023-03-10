@@ -29,7 +29,7 @@ pipeline {
         stage('Build docker image') {
             steps {
                 // Creo la imagen de docker
-                bat 'docker build -t ms-customer .'
+                bat 'docker build -t tgriffabenitez/ms-customer:latest .'
             }
         }
 
