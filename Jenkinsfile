@@ -12,7 +12,7 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build java project') {
             steps {
                 // Compilo el proyecto con maven para crear el .jar
                 bat 'mvn clean package'
@@ -26,10 +26,17 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Build docker image') {
             steps {
-                // Hago el deploy de la imagen usando docker-compose
+                // Creo la imagen de docker
                 bat 'docker build -t ms-customer .'
+            }
+        }
+
+        stage('Deploy docker image') {
+            steps {
+                // ejecuto la imagen en el puerto 8081
+                bat 'docker run -p 8081:8081 --name ms-customer-container ms-customer'
             }
         }
     }
