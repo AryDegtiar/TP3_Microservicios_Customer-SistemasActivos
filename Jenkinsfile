@@ -32,12 +32,5 @@ pipeline {
                 bat 'docker build -t ms-customer .'
             }
         }
-
-        stage('Deploy docker image') {
-            steps {
-                // ejecuto la imagen en el puerto 8081
-                bat 'docker run -p 8081:8081 --name ms-customer-container ms-customer'
-            }
-        }
     }
 }
