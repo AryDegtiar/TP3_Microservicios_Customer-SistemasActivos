@@ -32,29 +32,5 @@ pipeline {
                 bat 'docker build -t tgriffabenitez/ms-customer:latest .'
             }
         }
-
-        stage('Docker login') {
-            steps {
-                script {
-                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhub-pwd')]) {
-                        bat "docker login -u tgriffabenitez -p ${dockerhub-pwd}"
-                    }
-                }
-            }
-        }
-
-        stage('Push docker image') {
-            steps {
-                // Subo la imagen a dockerhub
-                bat 'docker push tgriffabenitez/ms-customer:latest'
-            }
-        }
-    }
-
-    post {
-        always {
-            // Hago el logout de docker
-            bat 'docker logout'
-        }
     }
 }
