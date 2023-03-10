@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Hago el deploy de la imagen usando docker-compose
-                bat 'docker-compose up -d'
+                bat 'docker build -t ms-customer .'
             }
         }
     }
